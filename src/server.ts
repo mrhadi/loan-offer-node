@@ -1,10 +1,10 @@
-const expressApp = require('./utils/expressApp')
+import  expressApp from './utils/expressApp'
 import { Config } from './utils/config'
 
 const start = async () => {
     try {
-        const app = await expressApp()
-        const server = await app.listen(Config.PORT)
+        const app = expressApp()
+        const server = app.listen(Config.PORT)
         console.log('Server started and listening on port', Config.PORT)
 
         return { server }
@@ -14,4 +14,4 @@ const start = async () => {
     }
 }
 
-module.exports = { start }
+export default { start }

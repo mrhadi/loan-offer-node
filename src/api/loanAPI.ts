@@ -1,9 +1,11 @@
-import calculateMonthlyPayment from '../logics'
-import { LoanOfferType } from '../models';
+import { Router } from 'express'
+import { validationResult, matchedData, body } from 'express-validator'
+
+import logics from '../logics'
+import { LoanOfferType } from '../models'
 import { Config } from '../utils/config'
 
-const router = require('express').Router()
-const { validationResult, matchedData, body } = require('express-validator')
+const router = Router()
 
 router.post(
   '/',
@@ -32,7 +34,7 @@ router.post(
 
     Config.lenders.map(lender => {
       loanOffers.push({
-        monthlyRepayments: calculateMonthlyPayment(userData.vehiclePrice, lender.rate, userData.loanTerm),
+        monthlyRepayments: logics.calculateMonthlyPayment(userData.vehiclePrice, lender.rate, userData.loanTerm),
         interestRate: lender.rate,
         fees: lender.fees,
         lender: lender.name
@@ -43,4 +45,4 @@ router.post(
   }
 )
 
-module.exports = router
+export default router

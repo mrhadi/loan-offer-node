@@ -1,14 +1,17 @@
-const router = require('express').Router()
-const apiRouter = require('../api')
+import { Router } from 'express'
+
+import apiRouter from '../api'
+
+const router = Router()
 
 router.use((err, req, res, next) => {
-    next()
+  next()
 })
 
 router.get('/', (req, res, next) => {
-    res.status(200).send('Server root')
+  res.status(200).send('Server root')
 })
 
 router.use('/api', apiRouter)
 
-module.exports = router
+export default router

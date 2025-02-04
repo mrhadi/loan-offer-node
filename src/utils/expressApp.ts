@@ -1,20 +1,19 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
+import express, { Request, Response, NextFunction } from 'express'
+import cors from 'cors'
 
-const routes = require('../routes')
+import routes from '../routes'
 
-const expressApp = async () => {
+const expressApp = () => {
     const app = express()
 
     app.set('views', './src/views')
     app.set('view engine', 'pug')
     app.use(express.static('public'))
     app.use(cors())
-    app.use(bodyParser.json())
+    app.use(express.json())
     app.use('/', routes)
 
     return app
 }
 
-module.exports = expressApp
+export default expressApp

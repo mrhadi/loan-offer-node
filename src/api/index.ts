@@ -1,6 +1,7 @@
-const router = require('express').Router()
+import { Router } from 'express'
+import loanAPI from './loanAPI'
 
-const loanAPI = require(`./loanAPI`)
+const router = Router()
 
 router.use((err, req, res, next) => {
   next()
@@ -8,4 +9,4 @@ router.use((err, req, res, next) => {
 
 router.use(`/loan`, loanAPI)
 
-module.exports = router
+export default router
