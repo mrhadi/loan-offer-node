@@ -1,14 +1,14 @@
 const router = require('express').Router()
-const { check, validationResult, matchedData } = require('express-validator')
+const { validationResult, matchedData, body } = require('express-validator')
 
 router.post(
   '/',
   [
-    check('firstName').isString(),
-    check('lastName').isString(),
-    check('email').isEmail(),
-    check('employmentStatus').not().isEmpty(),
-    check('employer').optional({ nullable: true }),
+    body('firstName').isString(),
+    body('lastName').isString(),
+    body('email').isEmail(),
+    body('employmentStatus').isIn(['employed', 'self-employed', 'unemployed']),
+    body('employer').if(body('employmentStatus').exists().equals('employed')).isString(),
   ],
   (req, res) => {
     const result = validationResult(req)
@@ -20,7 +20,7 @@ router.post(
       includeOptionals: true
     })
 
-    res.status(200).send('Ok')
+    res.status(200).send(userData)
   }
 )
 
