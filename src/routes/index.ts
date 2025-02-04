@@ -1,13 +1,11 @@
-import { Response, NextFunction } from 'express'
-
 const router = require('express').Router()
 const apiRouter = require('../api')
 
-router.use((next: NextFunction) => {
+router.use((next) => {
     next()
 })
 
-router.get('/', (res: Response) => {
+router.get('/', (res) => {
     res.status(200).send('Server root')
 })
 

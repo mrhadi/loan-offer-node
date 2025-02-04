@@ -7,6 +7,7 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleDetection": "force",
-    "lib": ["ES6"]
+    "lib": ["ES6"],
+    "noImplicitAny": false
   }
 }
