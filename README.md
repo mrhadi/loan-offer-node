@@ -1,5 +1,7 @@
 Sample Express web server
 
+Tech Stack: Node.js, Express, TypeScript, Jest, SuperTest
+
 # Getting Started
 
 >**Note**: Make sure you have node installed
