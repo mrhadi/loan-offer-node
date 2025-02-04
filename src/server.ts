@@ -1,4 +1,4 @@
-import  expressApp from './utils/expressApp'
+import expressApp from './utils/expressApp'
 import { Config } from './utils/config'
 
 const start = async () => {
