@@ -1,11 +1,11 @@
 const router = require('express').Router()
 const apiRouter = require('../api')
 
-router.use((next) => {
+router.use((err, req, res, next) => {
     next()
 })
 
-router.get('/', (res) => {
+router.get('/', (req, res, next) => {
     res.status(200).send('Server root')
 })
 
