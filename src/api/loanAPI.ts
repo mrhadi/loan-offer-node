@@ -1,3 +1,7 @@
+import calculateMonthlyPayment from '../logics'
+import { LoanOfferType } from '../models';
+import { Config } from '../utils/config'
+
 const router = require('express').Router()
 const { validationResult, matchedData, body } = require('express-validator')
 
@@ -24,7 +28,18 @@ router.post(
       includeOptionals: true
     })
 
-    res.status(200).send(userData)
+    const loanOffers: Array<LoanOfferType> = []
+
+    Config.lenders.map(lender => {
+      loanOffers.push({
+        monthlyRepayments: calculateMonthlyPayment(userData.vehiclePrice, lender.rate, userData.loanTerm),
+        interestRate: lender.rate,
+        fees: lender.fees,
+        lender: lender.name
+      })
+    })
+
+    res.status(200).send(loanOffers)
   }
 )
 

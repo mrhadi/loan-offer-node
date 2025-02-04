@@ -6,5 +6,4 @@ const calculateMonthlyPayment = (loanAmount: number, interestRate: number, loanT
 
   return monthlyPayment
 }
-
-module.exports = calculateMonthlyPayment
+export default calculateMonthlyPayment

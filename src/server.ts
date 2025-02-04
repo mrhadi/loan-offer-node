@@ -1,11 +1,11 @@
 const expressApp = require('./utils/expressApp')
-const { PORT } = require('./utils/config')
+import { Config } from './utils/config'
 
 const start = async () => {
     try {
         const app = await expressApp()
-        const server = await app.listen(PORT)
-        console.log('Server started and listening on port', PORT)
+        const server = await app.listen(Config.PORT)
+        console.log('Server started and listening on port', Config.PORT)
 
         return { server }
     } catch (err) {
