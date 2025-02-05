@@ -14,7 +14,7 @@ router.post(
     body('lastName').isString(),
     body('email').isEmail(),
     body('employmentStatus').isIn(['employed', 'self-employed', 'unemployed']),
-    body('employer').if(body('employmentStatus').exists().equals('employed')).isString(),
+    body('employerName').if(body('employmentStatus').exists().equals('employed')).isString(),
     body('vehiclePrice').isInt(),
     body('deposit').isInt(),
     body('loanPurpose').isString(),
